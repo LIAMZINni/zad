@@ -33,9 +33,9 @@ public class HelloController {
     @FXML
     void initialize() {
         Database dbhendler= new Database();
-        button_add.setOnAction(actionEvent -> {
-            dbhendler.singnewspaper(autor.getText(),id.getText(),name.getText(),nubresofpages.getText());
-        });
+        /*button_add.setOnAction(actionEvent -> {
+            dbhendler.singnewspaper(autor.getText(),name.getText(),nubresofpages.getText());
+        });*/
 
 
 

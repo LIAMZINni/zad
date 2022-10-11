@@ -13,13 +13,14 @@ public class Main {
         Scanner in=new Scanner(System.in);
         int num=0;
         List list=new List();
+        Database db=new Database();
 
 
 
 
         do {
             System.out.println("1-Добавить товар  2-Вывести список газет 3-Вывести список книг 4-Вывести список журналов " +
-                    "5-Продать товары"+" 6-Изменить товар 0-Закрыть "+"\n");
+                    "5-Продать товары"+" 6-Изменить товар 7-Вывести информацию о персонале 8-Вывести информацию о покупателе 0-Закрыть "+"\n");
             num = in.nextInt();
             if (num == 1) {
                 list.additem();
@@ -43,6 +44,27 @@ public class Main {
             }
             if(num==6){
                 list.chengenespaper();
+            }
+            if(num==7){
+                list.printpersonal();
+            }
+            if(num==8){
+                list.printbuyer();
+            }
+            if(num==9){
+                System.out.print("name= ");
+                String name=in.next();
+                System.out.print("id= ");
+                String id=in.next();
+
+
+                System.out.print("autor= ");
+                String autor=in.next();
+                System.out.print("pages= ");
+                String numberOfPages=in.next();
+
+                db.singnewspaper(name,id,autor,numberOfPages);
+
             }
 
         }

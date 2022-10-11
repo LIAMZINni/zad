@@ -5,5 +5,5 @@ public class Configs {
     protected String dbport="3306";
     protected String dbuser="root";
     protected String dbpass="19283746";
-    protected String dbname="ba";
+    protected String dbname="newspaper";
 }

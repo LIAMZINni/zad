@@ -1,21 +1,25 @@
 package com.example.zad;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Properties;
+import java.util.logging.Logger;
+
+
+
 
 public class Database extends Configs{
-    Connection dbconnection;
-    public Connection getDbconnection()
+
+        Connection dbconnection=null;
+        public Connection getDbconnection()
             throws ClassNotFoundException, SQLException{
         String connectionstring="jdbc:mysql://"+dbhost+":"+dbport+"/"+dbname;
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         dbconnection=DriverManager.getConnection(connectionstring,dbuser,dbpass);
         return dbconnection;
 
+
     }
     public void singnewspaper(String name, String autor, String id, String nubresofpages){
-        String insert="INSERT INTO"+Const.NEWSPAPER_TABLE+"("+Const.NEWSPAPER_name+","
+        String insert="INSERT "+"newspapers"+"("+Const.NEWSPAPER_name+","
                 +Const.NEWSPAPER_id+","+Const.NEWSPAPER_autor+","+Const.NEWSPAPER_nambersofpages+")"
                 +"VALUES(?,?,?,?)";
 
@@ -33,4 +37,11 @@ public class Database extends Configs{
         }
     }
 
+
+
+    public static void main(String[] args) {
+
+
+    }
 }
+

@@ -5,6 +5,8 @@ public class List {
     private ArrayList<Newspaper> newspaperArrayList = new ArrayList<>();
     private ArrayList<Books> booksArrayList = new ArrayList<>();
     private ArrayList<Magazine> magazineArrayList = new ArrayList<>();
+    private ArrayList<Personal> personalArrayList=new ArrayList<>();
+    private ArrayList<Buyer> buyerArrayList=new ArrayList<>();
     public void addnewspaper(Newspaper newspaper){
         newspaperArrayList.add(newspaper);
     }
@@ -14,10 +16,35 @@ public class List {
     public void addmagazins(Magazine magazine){
         magazineArrayList.add(magazine);
     }
+    public void addpersonal(){
+        Scanner in=new Scanner(System.in);
+        System.out.println("Введите имя ");
+        String name=in.next();
+        System.out.println("Возраст ");
+        int age=in.nextInt();
+        System.out.println("Должность ");
+        String job=in.next();
+        System.out.println("Время разгрузки ");
+        int time=in.nextInt();
+        System.out.println("Место разгрузки ");
+        String place=in.next();
+        System.out.println("\n");
+        personalArrayList.add(new Personal(name,age,job,time,place));
+
+
+    }
+    public void printpersonal(){
+        for(int i=0;i<personalArrayList.size();i++){
+            System.out.println(personalArrayList.get(i).toString());
+
+        }
+    }
+
     public  void additem(){
         Scanner scan=new Scanner(System.in);
         System.out.println(" 1-Газеты 2-Книги 3-Журналы");
         int num=scan.nextInt();
+        addpersonal();
         System.out.print("name= ");
         String name=scan.next();
         System.out.print("id= ");
@@ -64,6 +91,23 @@ public class List {
         }
 
     }
+    public void addbuyer(){
+        Scanner in=new Scanner(System.in);
+        System.out.println("Введите имя ");
+        String name=in.next();
+        System.out.println("Возраст ");
+        int age=in.nextInt();
+        int bonus=0;
+
+        Buyer pok=new Buyer (name,age,bonus);
+
+        buyerArrayList.add(pok);
+
+
+
+    }
+
+
     ArrayList<Double>Alaasum=new ArrayList<>();
     public void solditem() {
         double priceM=0,priceB=0 ,priceN=0;
@@ -75,6 +119,7 @@ public class List {
         printnewspapers();
         printbooks();
         printmagazins();
+        addbuyer();
         System.out.print("Номер в списке= ");
         int num1 = scan.nextInt();
 
@@ -99,6 +144,9 @@ public class List {
 
 
         }
+
+
+
         double sum = priceM+priceB+priceN;
         Alaasum.add(sum);
         double finalsum=0;
@@ -110,6 +158,12 @@ public class List {
 
         System.out.println("Общая сумма ="+finalsum);
 
+    }
+    public void printbuyer(){
+        for (int i=0;i<buyerArrayList.size();i++){
+            System.out.println(buyerArrayList.get(i).toString());
+
+        }
     }
 
     public void chengenespaper(){

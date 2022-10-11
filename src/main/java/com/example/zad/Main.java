@@ -39,7 +39,7 @@ public class Main {
             }
 
             if(num==5){
-                list.soldnewspaper();
+                list.solditem();
             }
             if(num==6){
                 list.chengenespaper();

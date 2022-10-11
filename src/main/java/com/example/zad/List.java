@@ -65,37 +65,35 @@ public class List {
 
     }
     ArrayList<Double>Alaasum=new ArrayList<>();
-    public void soldnewspaper() {
+    public void solditem() {
         double priceM=0,priceB=0 ,priceN=0;
 
 
         Scanner scan = new Scanner(System.in);
         System.out.print("1-Газеты 2-Книги 3-Журналы");
         int num = scan.nextInt();
+        printnewspapers();
+        printbooks();
+        printmagazins();
+        System.out.print("Номер в списке= ");
+        int num1 = scan.nextInt();
+
         if (num == 1) {
-            printnewspapers();
-            System.out.print("Номер в списке= ");
-            int numN = scan.nextInt();
-            newspaperArrayList.remove(numN);
+            newspaperArrayList.remove(num1);
             System.out.print("price=");
             priceN = scan.nextDouble();
 
         }
         if (num == 2) {
-            printbooks();
-            System.out.print("Номер в списке= ");
-            int numB = scan.nextInt();
-            booksArrayList.remove(numB);
+
+            booksArrayList.remove(num1);
             System.out.print("price=");
             priceB = scan.nextDouble();
 
         }
 
         if (num == 3) {
-            printmagazins();
-            System.out.print("Номер в списке= ");
-            int numM = scan.nextInt();
-            magazineArrayList.remove(numM);
+            magazineArrayList.remove(num1);
             System.out.print("price=");
             priceM = scan.nextDouble();
 

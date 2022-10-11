@@ -19,22 +19,7 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
-        Scanner in=new Scanner(System.in);
-        int num=0;
-        List list=new List();
 
-
-        while (num!=7){
-            System.out.println("chislo ");
-            num= in.nextInt();
-            if(num==1){
-                list.additem();
-
-
-
-
-            }
-        }
 
 
 

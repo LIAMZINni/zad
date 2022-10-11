@@ -8,7 +8,7 @@ public class Database extends Configs{
     Connection dbconnection;
     public Connection getDbconnection()
             throws ClassNotFoundException, SQLException{
-        String connectionstring="jbdc:mysql://"+dbhost+":"+dbport+"/"+dbname;
+        String connectionstring="jdbc:mysql://"+dbhost+":"+dbport+"/"+dbname;
         Class.forName("com.mysql.jdbc.Driver");
         dbconnection=DriverManager.getConnection(connectionstring,dbuser,dbpass);
         return dbconnection;
@@ -29,7 +29,7 @@ public class Database extends Configs{
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("error");
         }
     }
 

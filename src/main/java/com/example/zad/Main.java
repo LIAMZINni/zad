@@ -23,8 +23,27 @@ public class Main {
                     "5-Продать товары"+" 6-Изменить товар 7-Вывести информацию о персонале 8-Вывести информацию о покупателе 0-Закрыть "+"\n");
             num = in.nextInt();
             if (num == 1) {
-                list.additem();
 
+                System.out.println(" 1-Газеты 2-Книги 3-Журналы");
+                int n=in.nextInt();
+                String per=in.nextLine();
+                System.out.print("name= ");
+                String name=in.nextLine();
+
+                System.out.print("autor= ");
+                String autor=in.nextLine();
+                System.out.print("pages= ");
+                int numberofpages=in.nextInt();
+                if (n==1){
+                    db.singnewspaper(Const.tablenewspapers,name,autor,numberofpages);
+
+                }
+                if(n==2){
+                    db.singnewspaper(Const.tablebooks,name,autor,numberofpages);
+                }
+                if(n==3){
+                    db.singnewspaper(Const.tablemagazins,name,autor,numberofpages);
+                }
 
             }
             if(num==2){
@@ -51,21 +70,17 @@ public class Main {
             if(num==8){
                 list.printbuyer();
             }
-            if(num==9){
-                System.out.print("name= ");
-                String name=in.next();
-                System.out.print("id= ");
-                String id=in.next();
-
-
-                System.out.print("autor= ");
-                String autor=in.next();
-                System.out.print("pages= ");
-                String numberOfPages=in.next();
-
-                db.singnewspaper(name,id,autor,numberOfPages);
-
+            if(num==8){
+                list.printbuyer();
             }
+            if(num==9){
+                db.print(Const.tablenewspapers);
+            }
+            if(num==10){
+                int h=in.nextInt();
+                db.delit(Const.tablenewspapers,h);
+            }
+
 
         }
         while (num!=0);

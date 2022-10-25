@@ -16,6 +16,7 @@ public class List {
     public void addmagazins(Magazine magazine){
         magazineArrayList.add(magazine);
     }
+    Database database = new Database();
     public void addpersonal(){
         Scanner in=new Scanner(System.in);
         System.out.println("Введите имя ");
@@ -44,7 +45,6 @@ public class List {
         Scanner scan=new Scanner(System.in);
         System.out.println(" 1-Газеты 2-Книги 3-Журналы");
         int num=scan.nextInt();
-        addpersonal();
         System.out.print("name= ");
         String name=scan.next();
         System.out.print("id= ");
@@ -54,9 +54,13 @@ public class List {
         System.out.print("pages= ");
         int numberOfPages=scan.nextInt();
 
+
         if(num==1){
 
-            newspaperArrayList.add(new Newspaper(name,id,numberOfPages,autor));
+            newspaperArrayList.add(new Newspaper( name,  id, numberOfPages,  autor));
+
+
+
         }
         else if(num==2){
             booksArrayList.add(new Books(name,id,numberOfPages,autor));
@@ -181,7 +185,7 @@ public class List {
         System.out.print("pages= ");
         int numberOfPages=scan.nextInt();
         if(num==1){
-            Newspaper newspaper=new Newspaper(name,id,numberOfPages,autor);
+            Newspaper newspaper=new Newspaper(name,  id, numberOfPages,  autor);
             newspaperArrayList.set(num1,newspaper);
         }
         if (num==2){

@@ -34,7 +34,7 @@ public class HelloController {
     void initialize() {
         Database dbhendler= new Database();
         /*button_add.setOnAction(actionEvent -> {
-            dbhendler.singnewspaper(autor.getText(),name.getText(),nubresofpages.getText());
+            dbhendler.singnewspaper(Const.tablenewspapers,autor.getText(),name.getText(),nubresofpages.getText());
         });*/
 
 

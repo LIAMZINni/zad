@@ -1,10 +1,7 @@
 package com.example.zad;
 import java.sql.*;
-import java.util.Properties;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Logger;
-
-
 
 
 public class Database extends Configs{
@@ -39,7 +36,7 @@ public class Database extends Configs{
         }
     }
     public void apeit(String table,String name, String autor, int nubresofpages,int id){
-        String insert= "UPDATE "+table+" SET name = ?, autor = ?, nambersofpages = ? WHERE id = ?";
+        String insert= "UPDATE "+table+" SET name = ?, autor = ?, numbersofpages = ? WHERE id = ?";
 
         try {
             PreparedStatement prST=getDbconnection().prepareStatement(insert);
@@ -101,24 +98,33 @@ public class Database extends Configs{
 
         }
     }
-    public void print(String table){
-        String insert= "SELECT * FROM "+table;
+
+
+    public void print(String table) {
+        String insert = "SELECT * FROM " + table;
+        ArrayList<Newspaper>newspaperArrayList=new ArrayList<>();
+
+
 
         try {
-            PreparedStatement prST=getDbconnection().prepareStatement(insert);
+            PreparedStatement prST = getDbconnection().prepareStatement(insert);
+
+
+            ResultSet resultSet = prST.executeQuery(insert);
+            while (resultSet.next()) {
+
+                int id = (resultSet.getInt(1));
+                String name = (resultSet.getString(2));
+                String autor = (resultSet.getString(3));
+                int numbersofpages = (resultSet.getInt(4));
+                newspaperArrayList.add(new Newspaper(name,id,numbersofpages,autor));
 
 
 
-
-            ResultSet resultSet=prST.executeQuery(insert);
-            while (resultSet.next()){
-                Item item= new Item();
-                item.setId(resultSet.getInt(1));
-                item.setName(resultSet.getString(2));
-                item.setAutor(resultSet.getString(3));
-                item.setNubberOfPage(resultSet.getInt(4));
-                System.out.println(item.toString());
-
+                System.out.println( "id= " + id + "\n" +
+                        "name= " + name + "\n" +
+                        "autor= " + autor + "\n" +
+                        "numberofpages= " + numbersofpages + "\n");
 
 
             }
@@ -127,6 +133,7 @@ public class Database extends Configs{
         } catch (ClassNotFoundException e) {
             System.out.println("error");
         }
+
 
 
     }
@@ -151,10 +158,17 @@ public class Database extends Configs{
 
     public static void main(String[] args) {
             Database db=new Database();
+        Scanner in=new Scanner(System.in);
+
 
 
 
 
     }
-}
+
+
+
+
+    }
+
 

@@ -2,6 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -10,15 +14,72 @@
    <children>
       <AnchorPane layoutY="158.0" prefHeight="471.0" prefWidth="879.0" style="-fx-background-color: fafafa;">
          <children>
-            <TextField fx:id="id" layoutX="308.0" layoutY="66.0" prefHeight="22.0" prefWidth="291.0" promptText="id" />
-            <TextField fx:id="name" layoutX="308.0" layoutY="112.0" prefHeight="25.0" prefWidth="291.0" promptText="название" />
-            <TextField fx:id="autor" layoutX="308.0" layoutY="146.0" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
-            <TextField fx:id="nubresofpages" layoutX="308.0" layoutY="182.0" prefHeight="25.0" prefWidth="291.0" promptText="количесвто страниц" />
-            <Button fx:id="button_add" layoutX="373.0" layoutY="343.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Добавить">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
+            <MenuButton layoutX="72.0" layoutY="47.0" mnemonicParsing="false" text="Добавить газету">
+              <items>
+                <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="name" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                     </graphic>
+                  </MenuItem>
+                <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="autor" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="nubresofpages" prefHeight="25.0" prefWidth="291.0" promptText="количесвто страниц" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="button_add" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="134.0" text="Добавить">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+              </items>
+            </MenuButton>
+            <Button fx:id="button_print" layoutX="219.0" layoutY="47.0" mnemonicParsing="false" text="Button" />
+            <TableView fx:id="table" layoutX="133.0" layoutY="176.0" prefHeight="200.0" prefWidth="496.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="id" />
+                <TableColumn prefWidth="75.0" text="name" />
+                  <TableColumn prefWidth="75.0" text="autor" />
+                  <TableColumn prefWidth="75.0" text="id" />
+              </columns>
+            </TableView>
+            <MenuButton layoutX="300.0" layoutY="47.0" mnemonicParsing="false" text="Изменить газету">
+               <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="id" prefHeight="25.0" prefWidth="291.0" promptText="id" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="name2" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="autor2" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <TextField fx:id="nubresofpages2" prefHeight="25.0" prefWidth="291.0" promptText="количесвто страниц" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="buttom_apdate_newspaper" mnemonicParsing="false" onAction="#update" text="Изменить" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </MenuButton>
          </children>
       </AnchorPane>
       <Label layoutX="326.0" layoutY="54.0" prefHeight="50.0" prefWidth="257.0" text="Newsstand" textFill="#f8f7f7">

@@ -5,7 +5,8 @@ public class Newspaper {
     private String name;
     private int id;
     private int nubberOfPage;
-    public Newspaper(String name, int id, int nubberOfPage, String autor) {
+
+    public Newspaper(String name, int id, int nubberOfPage,String autor) {
         this.name = name;
         this.id = id;
         this.nubberOfPage = nubberOfPage;

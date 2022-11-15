@@ -24,26 +24,7 @@ public class Main {
             num = in.nextInt();
             if (num == 1) {
 
-                System.out.println(" 1-Газеты 2-Книги 3-Журналы");
-                int n=in.nextInt();
-                String per=in.nextLine();
-                System.out.print("name= ");
-                String name=in.nextLine();
-
-                System.out.print("autor= ");
-                String autor=in.nextLine();
-                System.out.print("pages= ");
-                int numberofpages=in.nextInt();
-                if (n==1){
-                    db.singnewspaper(Const.tablenewspapers,name,autor,numberofpages);
-
-                }
-                if(n==2){
-                    db.singnewspaper(Const.tablebooks,name,autor,numberofpages);
-                }
-                if(n==3){
-                    db.singnewspaper(Const.tablemagazins,name,autor,numberofpages);
-                }
+                list.additem();
 
             }
             if(num==2){

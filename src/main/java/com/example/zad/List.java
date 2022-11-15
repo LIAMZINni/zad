@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 public class List {
     private ArrayList<Newspaper> newspaperArrayList = new ArrayList<>();
+
     private ArrayList<Books> booksArrayList = new ArrayList<>();
     private ArrayList<Magazine> magazineArrayList = new ArrayList<>();
     private ArrayList<Personal> personalArrayList=new ArrayList<>();
@@ -51,22 +52,22 @@ public class List {
         int id=scan.nextInt();
         System.out.print("autor= ");
         String autor=scan.next();
-        System.out.print("pages= ");
-        int numberOfPages=scan.nextInt();
+        System.out.print("price ");
+        double price= scan.nextInt();
 
 
         if(num==1){
 
-            newspaperArrayList.add(new Newspaper( name,  id, numberOfPages,  autor));
+            newspaperArrayList.add(new Newspaper( name,  id, price,  autor));
 
 
 
         }
         else if(num==2){
-            booksArrayList.add(new Books(name,id,numberOfPages,autor));
+            booksArrayList.add(new Books(name,id,price,autor));
         }
         else if(num==3){
-            magazineArrayList.add(new Magazine(name,id,numberOfPages,autor));
+            magazineArrayList.add(new Magazine(name,id,price,autor));
         }
 
 
@@ -105,6 +106,7 @@ public class List {
 
         Buyer pok=new Buyer (name,age,bonus);
 
+
         buyerArrayList.add(pok);
 
 
@@ -128,23 +130,22 @@ public class List {
         int num1 = scan.nextInt();
 
         if (num == 1) {
+            Newspaper newspaper = newspaperArrayList.get(num1);
             newspaperArrayList.remove(num1);
-            System.out.print("price=");
-            priceN = scan.nextDouble();
+            priceN=newspaper.getPrice();
 
         }
         if (num == 2) {
-
+            Books books=booksArrayList.get(num1);
             booksArrayList.remove(num1);
-            System.out.print("price=");
-            priceB = scan.nextDouble();
+            priceB = books.getPrice();
 
         }
 
         if (num == 3) {
+            Magazine magazine=magazineArrayList.get(num1);
             magazineArrayList.remove(num1);
-            System.out.print("price=");
-            priceM = scan.nextDouble();
+            priceM =magazine.getPrice();
 
 
         }
@@ -182,18 +183,18 @@ public class List {
         int id=scan.nextInt();
         System.out.print("autor= ");
         String autor=scan.next();
-        System.out.print("pages= ");
-        int numberOfPages=scan.nextInt();
+        System.out.print("price");
+        double price=scan.nextInt();
         if(num==1){
-            Newspaper newspaper=new Newspaper(name,  id, numberOfPages,  autor);
+            Newspaper newspaper=new Newspaper(name,  id, price,  autor);
             newspaperArrayList.set(num1,newspaper);
         }
         if (num==2){
-            Books books=new Books(name,id,numberOfPages,autor);
+            Books books=new Books(name,id,price,autor);
             booksArrayList.set(num1,books);
         }
         if(num==3){
-            Magazine magazine=new Magazine(name,id,numberOfPages,autor);
+            Magazine magazine=new Magazine(name,id,price,autor);
             magazineArrayList.set(num1,magazine);
         }
 

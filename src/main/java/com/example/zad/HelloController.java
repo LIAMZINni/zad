@@ -4,17 +4,29 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class HelloController {
+public class HelloController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
+
+
+    @FXML
+    private Button button_add_magazine;
+    @FXML
+    private TextField add_autor_magazine;
+
+    @FXML
+    private TextField add_name_magazine;
+
+    @FXML
+    private TextField add_price_magazine;
 
     @FXML
     private URL location;
@@ -24,6 +36,9 @@ public class HelloController {
 
     @FXML
     private TextField autor2;
+
+    @FXML
+    private TableColumn<Newspaper, String> autor_colomn;
 
     @FXML
     private Button buttom_apdate_newspaper;
@@ -38,19 +53,66 @@ public class HelloController {
     private TextField id;
 
     @FXML
+    private TableColumn<Newspaper, Integer> id_colomn;
+
+    @FXML
     private TextField name;
 
     @FXML
     private TextField name2;
 
     @FXML
-    private TextField nubresofpages;
+    private TableColumn<Newspaper, String> name_colomn;
 
     @FXML
-    private TextField nubresofpages2;
+    private TextField price2;
 
     @FXML
-    private TableView<?> table;
+    private TextField price;
+
+    @FXML
+    private TableColumn<Newspaper, Double> price_colomn;
+
+    @FXML
+    private TableView<Newspaper> table;
+    @FXML
+    private Label test_label;
+    @FXML
+    private TextField add_autor_books;
+    @FXML
+    private TextField add_name_books;
+    @FXML
+    private TextField add_price_books;
+    @FXML
+    private Button buttom_apdate_magazine;
+    @FXML
+    private TextField chenge_autor_magazine;
+
+    @FXML
+    private TextField chenge_id_magazine;
+
+    @FXML
+    private TextField chenge_name_magazine;
+
+    @FXML
+    private TextField chenge_price_magazine;
+    @FXML
+    private TextField chenge_autor_books;
+    @FXML
+    private TextField chenge_id_books;
+    @FXML
+    private TextField chenge_name_books;
+    @FXML
+    private TextField chenge_price_books;
+    @FXML
+    private TextField delit_id_newspaper;
+    @FXML
+    private TextField delit_id_magazine;
+    @FXML TextField delit_id_books;
+
+    @FXML
+    private ChoiceBox<String> chose_box;
+    private String[] choises={"Газеты","Журналы","Книги"};
 
     @FXML
 
@@ -59,21 +121,69 @@ public class HelloController {
         public void initialize() {
 
             button_add.setOnAction(actionEvent -> {
-                dbhendler.singnewspaper(Const.tablenewspapers, autor.getText(), name.getText(), Integer.parseInt(nubresofpages.getText()));
+                dbhendler.singnewspaper(Const.tablenewspapers, autor.getText(), name.getText(), Integer.parseInt(price.getText()));
             });
         }
 
          public void update(){
             buttom_apdate_newspaper.setOnAction(actionEvent -> {
-            dbhendler.apeit(Const.tablenewspapers,name2.getText(),autor2.getText(), Integer.parseInt(nubresofpages2.getText()),Integer.parseInt(id.getText()));
+            dbhendler.updete(Const.tablenewspapers,name2.getText(),autor2.getText(), Integer.parseInt(price2.getText()),Integer.parseInt(id.getText()));
 
 
         });
+        }
+        public void print_table(){
+            id_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,Integer>("id"));
+            name_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,String>("name"));
+            autor_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,String>("autor"));
+            price_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,Double>("price"));
+            String vibor=chose_box.getValue();
+            if(vibor.equals("Газеты")){
+            table.setItems(dbhendler.print(Const.tablenewspapers));}
+            if(vibor.equals("Журналы")){
+                table.setItems(dbhendler.print(Const.tablemagazins));
+
+            }
+            if(vibor.equals("Книги")){
+                table.setItems(dbhendler.print(Const.tablebooks));
+            }
+
+
+
+        }
+        public void addmagazine(){
+            dbhendler.singnewspaper(Const.tablemagazins,add_name_magazine.getText(),add_autor_magazine.getText(),Integer.parseInt(add_price_magazine.getText()));
+
+        }
+        public void addbooks(){
+            dbhendler.singnewspaper(Const.tablebooks, add_name_books.getText(), add_autor_books.getText(),Integer.parseInt(add_price_books.getText()));
+        }
+        public void chenge_magazine(){
+            dbhendler.updete(Const.tablemagazins, chenge_name_magazine.getText(),chenge_autor_magazine.getText(),Integer.parseInt(chenge_price_magazine.getText()),Integer.parseInt(chenge_id_magazine.getText()));
+        }
+        public void chenge_books(){
+            dbhendler.updete(Const.tablebooks,chenge_name_books.getText(),chenge_autor_books.getText(),Integer.parseInt(chenge_price_books.getText()),Integer.parseInt(chenge_id_books.getText()));
+
+        }
+        public void delit_newspaper(){
+            dbhendler.delit(Const.tablenewspapers,Integer.parseInt(delit_id_newspaper.getText()));
+
+        }
+        public void delit_magazine(){
+            dbhendler.delit(Const.tablemagazins,Integer.parseInt(delit_id_magazine.getText()));
+        }
+        public void delit_books(){
+            dbhendler.delit(Const.tablebooks,Integer.parseInt(delit_id_books.getText()));
 
         }
 
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        chose_box.getItems().addAll(choises);
     }
+}
 
 
 

@@ -1,15 +1,21 @@
 package com.example.zad;
 
+import javafx.beans.property.StringProperty;
+
 public class Newspaper {
     private String autor;
     private String name;
     private int id;
-    private int nubberOfPage;
+    private double price;
 
-    public Newspaper(String name, int id, int nubberOfPage,String autor) {
+    public double getPrice() {
+        return price;
+    }
+
+    public Newspaper(String name, int id, double price, String autor) {
         this.name = name;
         this.id = id;
-        this.nubberOfPage = nubberOfPage;
+        this.price = price;
         this.autor=autor;
     }
 
@@ -28,12 +34,11 @@ public class Newspaper {
     public String getName(){
         return name;
     }
-    public void setNubberOfPage(int newnumbers){
-        this.nubberOfPage=nubberOfPage;
+
+    public void setPrice(double price) {
+        this.price = price;
     }
-    public int getNubberOfPage(){
-        return nubberOfPage;
-    }
+
     public void setAutor(String newautor){
         this.autor=autor;
     }
@@ -46,7 +51,7 @@ public class Newspaper {
         return "id= "+id+"\n"+
                 "name= "+name+"\n"+
                 "autor= "+autor+"\n"+
-                 "numberofpages= "+nubberOfPage+"\n";
+                 "price= "+price+"\n";
 
     }
 }

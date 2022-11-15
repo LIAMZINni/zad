@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,76 +13,296 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="872.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.zad.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="879.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.zad.HelloController">
    <children>
       <AnchorPane layoutY="158.0" prefHeight="471.0" prefWidth="879.0" style="-fx-background-color: fafafa;">
          <children>
-            <MenuButton layoutX="72.0" layoutY="47.0" mnemonicParsing="false" text="Добавить газету">
-              <items>
-                <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <TextField fx:id="name" prefHeight="25.0" prefWidth="291.0" promptText="название" />
-                     </graphic>
-                  </MenuItem>
-                <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <TextField fx:id="autor" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <TextField fx:id="nubresofpages" prefHeight="25.0" prefWidth="291.0" promptText="количесвто страниц" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <Button fx:id="button_add" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="134.0" text="Добавить">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                     </graphic>
-                  </MenuItem>
-              </items>
-            </MenuButton>
-            <Button fx:id="button_print" layoutX="219.0" layoutY="47.0" mnemonicParsing="false" text="Button" />
-            <TableView fx:id="table" layoutX="133.0" layoutY="176.0" prefHeight="200.0" prefWidth="496.0">
+            <TableView fx:id="table" layoutX="192.0" layoutY="182.0" prefHeight="200.0" prefWidth="496.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="id" />
-                <TableColumn prefWidth="75.0" text="name" />
-                  <TableColumn prefWidth="75.0" text="autor" />
-                  <TableColumn prefWidth="75.0" text="id" />
+                <TableColumn fx:id="id_colomn" prefWidth="45.0" text="id" />
+                <TableColumn fx:id="name_colomn" prefWidth="103.0" text="name" />
+                  <TableColumn fx:id="autor_colomn" prefWidth="98.0" text="autor" />
+                  <TableColumn fx:id="price_colomn" text="price" />
               </columns>
             </TableView>
-            <MenuButton layoutX="300.0" layoutY="47.0" mnemonicParsing="false" text="Изменить газету">
-               <items>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <TextField fx:id="id" prefHeight="25.0" prefWidth="291.0" promptText="id" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <TextField fx:id="name2" prefHeight="25.0" prefWidth="291.0" promptText="название" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <TextField fx:id="autor2" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <TextField fx:id="nubresofpages2" prefHeight="25.0" prefWidth="291.0" promptText="количесвто страниц" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <Button fx:id="buttom_apdate_newspaper" mnemonicParsing="false" onAction="#update" text="Изменить" />
-                     </graphic>
-                  </MenuItem>
-               </items>
-            </MenuButton>
+            <MenuBar layoutX="14.0" layoutY="14.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Добавить товар">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Добавить газету">
+                                <items>
+                                  <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="name" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                                       </graphic>
+                                    </MenuItem>
+                                  <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="autor" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="price" prefHeight="25.0" prefWidth="291.0" promptText="цена" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button fx:id="button_add" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="134.0" text="Добавить">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                       </graphic>
+                                    </MenuItem>
+                                </items>
+                              </MenuButton>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" onAction="#addmagazine" text="Добавить журнал">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="add_name_magazine" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="add_autor_magazine" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="add_price_magazine" prefHeight="25.0" prefWidth="291.0" promptText="цена" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button fx:id="button_add_magazine" mnemonicParsing="false" onAction="#addmagazine" prefHeight="25.0" prefWidth="134.0" text="Добавить">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </MenuButton>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Добавить книгу">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="add_name_books" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="add_autor_books" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="add_price_books" prefHeight="25.0" prefWidth="291.0" promptText="цена" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button fx:id="button_add_books" mnemonicParsing="false" onAction="#addbooks" prefHeight="25.0" prefWidth="134.0" text="Добавить">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </MenuButton>
+                           </graphic>
+                        </MenuItem>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Изменить товар ">
+                  <items>
+                        <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Изменить газету">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="id" prefHeight="25.0" prefWidth="291.0" promptText="id" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="name2" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="autor2" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="price2" prefHeight="25.0" prefWidth="291.0" promptText="цена" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button fx:id="buttom_apdate_newspaper" mnemonicParsing="false" onAction="#update" text="Изменить" />
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </MenuButton>
+                           </graphic>
+                        </MenuItem>
+                    <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Изменить журнал">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_id_magazine" prefHeight="25.0" prefWidth="291.0" promptText="id" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_name_magazine" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_autor_magazine" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_price_magazine" prefHeight="25.0" prefWidth="291.0" promptText="цена" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button fx:id="buttom_apdate_magazine" mnemonicParsing="false" onAction="#chenge_magazine" text="Изменить" />
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </MenuButton>
+                           </graphic></MenuItem>
+                        <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Изменить книгу">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_id_books" prefHeight="25.0" prefWidth="291.0" promptText="id" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_name_books" prefHeight="25.0" prefWidth="291.0" promptText="название" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_autor_books" prefHeight="25.0" prefWidth="291.0" promptText="автор" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="chenge_price_books" prefHeight="25.0" prefWidth="291.0" promptText="цена" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button fx:id="buttom_apdate_newspaper2" mnemonicParsing="false" onAction="#chenge_books" text="Изменить" />
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </MenuButton>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" text="закрыть" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Удалить товар ">
+                  <items>
+                        <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Удалить газету">
+                                <items>
+                                  <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="delit_id_newspaper" promptText="id" />
+                                       </graphic>
+                                    </MenuItem>
+                                  <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button mnemonicParsing="false" onAction="#delit_newspaper" text="Удалить" />
+                                       </graphic>
+                                    </MenuItem>
+                                </items>
+                              </MenuButton>
+                           </graphic>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Удалить журнал">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="delit_id_magazine" promptText="id" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button mnemonicParsing="false" onAction="#delit_magazine" text="Удалить" />
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </MenuButton>
+                           </graphic></MenuItem>
+                    <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <MenuButton mnemonicParsing="false" text="Удалить книгу">
+                                 <items>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <TextField fx:id="delit_id_books" promptText="id" />
+                                       </graphic>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false">
+                                       <graphic>
+                                          <Button mnemonicParsing="false" onAction="#delit_books" text="Удалить" />
+                                       </graphic>
+                                    </MenuItem>
+                                 </items>
+                              </MenuButton>
+                           </graphic></MenuItem>
+                        <MenuItem mnemonicParsing="false" text="закрыть" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Посмотреть информацию о товаре ">
+                    <items>
+                      <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <Button fx:id="button_print" mnemonicParsing="false" onAction="#print_table" text="Печать ">
+                                 <graphic>
+                                    <ChoiceBox fx:id="chose_box" prefWidth="150.0" />
+                                 </graphic>
+                              </Button>
+                           </graphic>
+                        </MenuItem>
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
          </children>
       </AnchorPane>
       <Label layoutX="326.0" layoutY="54.0" prefHeight="50.0" prefWidth="257.0" text="Newsstand" textFill="#f8f7f7">

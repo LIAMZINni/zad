@@ -21,6 +21,7 @@ public class InMemmory {
     Database database = new Database();
 
 
+
     public  void additem(){
         Scanner scan=new Scanner(System.in);
         System.out.println(" 1-Газеты 2-Книги 3-Журналы");
@@ -238,6 +239,9 @@ public class InMemmory {
 
         }
         return null;
+    }
+    public void delit(int id){
+
     }
 
 

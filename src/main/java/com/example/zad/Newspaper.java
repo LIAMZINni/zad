@@ -6,21 +6,31 @@ public class Newspaper {
     private String autor;
     private String name;
     private int id;
+    private int kolvo;
     private double price;
 
     public double getPrice() {
         return price;
     }
 
-    public Newspaper(String name, int id, double price, String autor) {
+
+
+    public Newspaper(String name, int id, double price,int kolvo, String autor) {
         this.name = name;
         this.id = id;
         this.price = price;
         this.autor=autor;
+        this.kolvo=kolvo;
     }
 
 
+    public int getKolvo() {
+        return kolvo;
+    }
 
+    public void setKolvo(int kolvo) {
+        this.kolvo = kolvo;
+    }
 
     public void setId(int newid){
         this.id=id;
@@ -51,6 +61,7 @@ public class Newspaper {
         return "id= "+id+"\n"+
                 "name= "+name+"\n"+
                 "autor= "+autor+"\n"+
+                "kolvo= "+kolvo+"\n"+
                  "price= "+price+"\n";
 
     }

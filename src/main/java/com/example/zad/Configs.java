@@ -6,4 +6,5 @@ public class Configs {
     protected String dbuser="root";
     protected String dbpass="19283746";
     protected String dbname="newspaper";
+    protected String durl="jdbc:mysql://";
 }

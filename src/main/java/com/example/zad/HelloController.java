@@ -72,7 +72,8 @@ public class HelloController implements Initializable {
 
     @FXML
     private TableColumn<Newspaper, Double> price_colomn;
-
+    @FXML
+    private TableColumn<Newspaper,Integer> kolvo_kolomn;
     @FXML
     private TableView<Newspaper> table;
     @FXML
@@ -109,6 +110,19 @@ public class HelloController implements Initializable {
     @FXML
     private TextField delit_id_magazine;
     @FXML TextField delit_id_books;
+    @FXML
+    TextField add_kolvo_newspaper;
+    @FXML
+    TextField add_kolvo_magazine;
+    @FXML
+    TextField add_kolvo_books;
+    @FXML
+    TextField update_newspaper_kolvo;
+    @FXML
+    TextField update_magazins_kolvo;
+    @FXML
+    TextField update_books_kolvo;
+
 
     @FXML
     private ChoiceBox<String> chose_box;
@@ -120,14 +134,13 @@ public class HelloController implements Initializable {
     Database dbhendler= new Database();
         public void initialize() {
 
-            button_add.setOnAction(actionEvent -> {
-                dbhendler.singnewspaper(Const.tablenewspapers, autor.getText(), name.getText(), Integer.parseInt(price.getText()));
-            });
+            dbhendler.singnewspaper(Const.tablenewspapers, autor.getText(), name.getText(),Integer.parseInt(add_kolvo_newspaper.getText()), Integer.parseInt(price.getText()));
+
         }
 
          public void update(){
             buttom_apdate_newspaper.setOnAction(actionEvent -> {
-            dbhendler.updete(Const.tablenewspapers,name2.getText(),autor2.getText(), Integer.parseInt(price2.getText()),Integer.parseInt(id.getText()));
+            dbhendler.updete(Const.tablenewspapers,name2.getText(),autor2.getText(),Integer.parseInt(update_newspaper_kolvo.getText()), Integer.parseInt(price2.getText()),Integer.parseInt(id.getText()));
 
 
         });
@@ -137,6 +150,7 @@ public class HelloController implements Initializable {
             name_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,String>("name"));
             autor_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,String>("autor"));
             price_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,Double>("price"));
+            kolvo_kolomn.setCellValueFactory(new PropertyValueFactory<Newspaper,Integer>("kolvo"));
             String vibor=chose_box.getValue();
             if(vibor.equals("Газеты")){
             table.setItems(dbhendler.print(Const.tablenewspapers));}
@@ -152,17 +166,17 @@ public class HelloController implements Initializable {
 
         }
         public void addmagazine(){
-            dbhendler.singnewspaper(Const.tablemagazins,add_name_magazine.getText(),add_autor_magazine.getText(),Integer.parseInt(add_price_magazine.getText()));
+            dbhendler.singnewspaper(Const.tablemagazins,add_name_magazine.getText(),add_autor_magazine.getText(),Integer.parseInt(add_kolvo_magazine.getText()),Integer.parseInt(add_price_magazine.getText()));
 
         }
         public void addbooks(){
-            dbhendler.singnewspaper(Const.tablebooks, add_name_books.getText(), add_autor_books.getText(),Integer.parseInt(add_price_books.getText()));
+            dbhendler.singnewspaper(Const.tablebooks, add_name_books.getText(), add_autor_books.getText(),Integer.parseInt(add_kolvo_books.getText()),Integer.parseInt(add_price_books.getText()));
         }
         public void chenge_magazine(){
-            dbhendler.updete(Const.tablemagazins, chenge_name_magazine.getText(),chenge_autor_magazine.getText(),Integer.parseInt(chenge_price_magazine.getText()),Integer.parseInt(chenge_id_magazine.getText()));
+            dbhendler.updete(Const.tablemagazins, chenge_name_magazine.getText(),chenge_autor_magazine.getText(),Integer.parseInt(update_magazins_kolvo.getText()),Integer.parseInt(chenge_price_magazine.getText()),Integer.parseInt(chenge_id_magazine.getText()));
         }
         public void chenge_books(){
-            dbhendler.updete(Const.tablebooks,chenge_name_books.getText(),chenge_autor_books.getText(),Integer.parseInt(chenge_price_books.getText()),Integer.parseInt(chenge_id_books.getText()));
+            dbhendler.updete(Const.tablebooks,chenge_name_books.getText(),chenge_autor_books.getText(),Integer.parseInt(chenge_price_books.getText()),Integer.parseInt(update_books_kolvo.getText()),Integer.parseInt(chenge_id_books.getText()));
 
         }
         public void delit_newspaper(){

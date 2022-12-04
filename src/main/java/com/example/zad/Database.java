@@ -12,13 +12,7 @@ import java.util.List;
 public class Database extends Configs{
 
 
-        /*Connection dbconnection=null;
-        public Connection getDbconnection()
-            throws ClassNotFoundException, SQLException{
-        String connectionstring="jdbc:mysql://"+dbhost+":"+dbport+"/"+dbname;
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        dbconnection=DriverManager.getConnection(connectionstring,dbuser,dbpass);
-        return dbconnection;}*/
+
 
 
     private static Connection connection;

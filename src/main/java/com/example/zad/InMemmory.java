@@ -21,6 +21,25 @@ public class InMemmory {
     Database database = new Database();
 
 
+    public <T extends Newspaper> void add(T sourse){
+        String klass = String.valueOf(sourse.getClass());
+        System.out.println(klass);
+        Scanner in =new Scanner(System.in);
+
+
+
+        int num=in.nextInt();
+        switch (num){
+            case 1->newspaperArrayList.add(sourse);
+            case 2->booksArrayList.add((Books) sourse);
+            case 3->magazineArrayList.add((Magazine) sourse);
+
+        }
+
+
+
+
+    }
 
     public  void additem(){
         Scanner scan=new Scanner(System.in);
@@ -79,6 +98,8 @@ public class InMemmory {
             print(magazineArrayList);
         }
     }
+
+
 
 
 
@@ -240,9 +261,7 @@ public class InMemmory {
         }
         return null;
     }
-    public void delit(int id){
 
-    }
 
 
 

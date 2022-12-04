@@ -22,6 +22,7 @@ public class Main {
 
 
 
+
         do {
             System.out.println("1-Добавить товар  2-Вывести информацию о товаре " +
                     "3-Продать товары"+" 4-Изменить товар  5-Найти по id 0-Закрыть "+"\n");
@@ -32,6 +33,7 @@ public class Main {
                 case 3->list.solditem();
                 case 4->list.chengenespaper();
                 case 5->list.findbyid();
+
                 default -> System.err.println("No command found");
 
             }

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/new/new.iml" filepath="$PROJECT_DIR$/new/new.iml" />
+      <module fileurl="file://$PROJECT_DIR$/New/New.iml" filepath="$PROJECT_DIR$/New/New.iml" />
       <module fileurl="file://$PROJECT_DIR$/zad.iml" filepath="$PROJECT_DIR$/zad.iml" />
     </modules>
   </component>

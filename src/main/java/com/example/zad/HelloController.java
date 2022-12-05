@@ -119,6 +119,39 @@ public class HelloController implements Initializable {
     TextField update_magazins_kolvo;
     @FXML
     TextField update_books_kolvo;
+    @FXML
+    private TextField sold_bboks_id;
+
+    @FXML
+    private TextField sold_books_kolvo;
+
+    @FXML
+    private TextField sold_magazin_id;
+
+    @FXML
+    private TextField sold_magazins_kolvo;
+
+    @FXML
+    private TextField sold_newspapers_id;
+
+    @FXML
+    private TextField sold_newspapers_kolvo;
+    @FXML
+    private Label label_books_price;
+
+    @FXML
+    private Label label_magazins_price;
+
+    @FXML
+    private Label label_newspaers_price;
+    @FXML
+    private Button button_books_sold;
+
+    @FXML
+    private Button button_magazins_sold;
+
+    @FXML
+    private Button button_newspapers_sold;
 
 
     @FXML
@@ -187,6 +220,22 @@ public class HelloController implements Initializable {
             dbhendler.delit(Const.tablebooks,Integer.parseInt(delit_id_books.getText()));
 
         }
+        public void Sold_newspapers(){
+            double priceN=0;
+            priceN=dbhendler.sold(Const.tablenewspapers,Integer.parseInt(sold_newspapers_id.getText()),Integer.parseInt(sold_newspapers_kolvo.getText()));
+            label_newspaers_price.setText("Цена = "+String.valueOf(priceN));
+        }
+    public void Sold_magazins(){
+        double priceM=0;
+        priceM=dbhendler.sold(Const.tablemagazins,Integer.parseInt(sold_magazin_id.getText()),Integer.parseInt(sold_magazins_kolvo.getText()));
+        label_magazins_price.setText("Цена = "+String.valueOf(priceM));
+    }
+    public void Sold_books(){
+            double priceB=0;
+            priceB=dbhendler.sold(Const.tablebooks,Integer.parseInt(sold_bboks_id.getText()),Integer.parseInt(sold_books_kolvo.getText()));
+            label_books_price.setText("Цена = "+String.valueOf(priceB));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chose_box.getItems().addAll(choises);

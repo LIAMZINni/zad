@@ -107,7 +107,7 @@ public class Database extends Configs{
             e.printStackTrace();
         }
         }
-    public  double sold(int id,String table,int kolvo1){
+    public  double sold(String table,int id,int kolvo1){
             String qery="SELECT kolvo,price FROM "+table+" WHERE id ="+id;
             String update="UPDATE "+table+" SET kolvo = ? WHERE id = "+ id;
             int kolvo=0;
@@ -122,7 +122,7 @@ public class Database extends Configs{
                 while (resultSet.next()){
                 kolvo=resultSet.getInt(1);
                 price= resultSet.getFloat(2);
-                System.out.println(kolvo+" "+price);
+
                 }
                 rez=kolvo-kolvo1;
 

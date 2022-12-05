@@ -3,9 +3,6 @@ package com.example.zad;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -190,14 +187,17 @@ public class HelloController implements Initializable {
             dbhendler.delit(Const.tablebooks,Integer.parseInt(delit_id_books.getText()));
 
         }
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chose_box.getItems().addAll(choises);
     }
 }
+
+
+
+
+
+
 
 
 

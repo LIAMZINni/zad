@@ -1,7 +1,5 @@
 package com.example.zad;
 
-import javafx.beans.property.StringProperty;
-
 public class Newspaper {
     private String autor;
     private String name;
@@ -15,7 +13,7 @@ public class Newspaper {
 
 
 
-    public Newspaper(String name, int id, double price,int kolvo, String autor) {
+    public Newspaper(String name, int id, double price, int kolvo, String autor) {
         this.name = name;
         this.id = id;
         this.price = price;
@@ -32,13 +30,13 @@ public class Newspaper {
         this.kolvo = kolvo;
     }
 
-    public void setId(int newid){
+    public void setId(int id){
         this.id=id;
     }
     public int getId() {
         return id;
     }
-    public void setName(String newname){
+    public void setName(String name){
         this.name=name;
     }
     public String getName(){
@@ -49,7 +47,7 @@ public class Newspaper {
         this.price = price;
     }
 
-    public void setAutor(String newautor){
+    public void setAutor(String autor){
         this.autor=autor;
     }
     public String getAutor(){
@@ -62,9 +60,7 @@ public class Newspaper {
                 "name= "+name+"\n"+
                 "autor= "+autor+"\n"+
                 "kolvo= "+kolvo+"\n"+
-                 "price= "+price+"\n";
+                "price= "+price+"\n";
 
     }
 }
-
-

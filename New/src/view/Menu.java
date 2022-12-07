@@ -31,6 +31,7 @@ public class Menu {
             case 5->find();
             case 6->delit();
             case 0->System.exit(0);
+            default -> System.err.println("No command found");
         }
     }
 

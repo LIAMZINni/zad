@@ -1,6 +1,7 @@
 package repozitory.DataBase;
 
-import domen.Newspaper;
+import domen.Books;
+
 import repozitory.Repozitory;
 
 import java.sql.Connection;
@@ -9,17 +10,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SqlNewspaperRepozitory implements Repozitory<Newspaper> {
-    private final Connection connection;
+public class SqlBooksRepozitory implements Repozitory<Books> {
+    public final Connection connection;
 
-    public SqlNewspaperRepozitory(DataBaseConnector connector) {
-        this.connection = connector.getDbconnection();
+    public SqlBooksRepozitory(DataBaseConnector baseConnector) {
+        this.connection = baseConnector.getDbconnection();
     }
 
     @Override
-    public void add(Newspaper sourse) {
-        String insert= "INSERT newspapers (name,autor,price,kolvo) VALUES(?,?,?,?)";
-
+    public void add(Books sourse) {
+        String insert= "INSERT books (name,autor,price,kolvo) VALUES(?,?,?,?)";
         try {
             PreparedStatement prST=connection.prepareStatement(insert);
 
@@ -37,9 +37,9 @@ public class SqlNewspaperRepozitory implements Repozitory<Newspaper> {
     }
 
     @Override
-    public Newspaper find(int id) {
-        String qery="SELECT *FROM newspapers WHERE id = "+id;
-        Newspaper newspaper = null;
+    public Books find(int id) {
+        String qery="SELECT *FROM books WHERE id = "+id;
+        Books books = null;
 
 
         try {
@@ -51,19 +51,19 @@ public class SqlNewspaperRepozitory implements Repozitory<Newspaper> {
                 String autor=resultSet.getString(3);
                 int kolvo=resultSet.getInt(4);
                 double price=resultSet.getDouble(5);
-                newspaper =new Newspaper(name,id1,price,kolvo,autor);
+                books =new Books(name,id1,price,kolvo,autor);
 
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return newspaper;
+        return books;
     }
 
     @Override
-    public void delit(Newspaper sourse) {
-        String insert= "DELETE FROM newspapers WHERE id = ?";
+    public void delit(Books sourse) {
+        String insert= "DELETE FROM books WHERE id = ?";
 
         try {
             PreparedStatement prST=connection.prepareStatement(insert);
@@ -78,9 +78,10 @@ public class SqlNewspaperRepozitory implements Repozitory<Newspaper> {
     }
 
     @Override
-    public ArrayList<Newspaper> print() {
-        String insert = "SELECT * FROM newspapers" ;
-        ArrayList<Newspaper>newspaperArrayList=new ArrayList<>();
+    public ArrayList<Books> print() {
+        String insert = "SELECT * FROM books" ;
+        ArrayList<Books>booksArrayList=new ArrayList<>();
+
 
 
 
@@ -97,7 +98,7 @@ public class SqlNewspaperRepozitory implements Repozitory<Newspaper> {
                 double price = (resultSet.getDouble(4));
                 int kolvo=(resultSet.getInt(5));
 
-                newspaperArrayList.add(new Newspaper(name,id,price,kolvo,autor));
+                booksArrayList.add(new Books(name,id,price,kolvo,autor));
 
 
             }
@@ -105,74 +106,73 @@ public class SqlNewspaperRepozitory implements Repozitory<Newspaper> {
             e.printStackTrace();
         }
 
-        return newspaperArrayList;
+        return booksArrayList;
     }
 
     @Override
     public double sold(int id, int kolvo1) {
-        String qery="SELECT kolvo,price FROM newspapers WHERE id ="+id;
-        String update="UPDATE newspapers SET kolvo = ? WHERE id = "+ id;
-        int kolvo=0;
-        double price=0;
-        int rez=0;
+        String qery = "SELECT kolvo,price FROM books WHERE id =" + id;
+        String update = "UPDATE books SET kolvo = ? WHERE id = " + id;
+        int kolvo = 0;
+        double price = 0;
+        int rez = 0;
         try {
 
-            PreparedStatement preparedStatement =connection.prepareStatement(qery);
+            PreparedStatement preparedStatement = connection.prepareStatement(qery);
             ResultSet resultSet = preparedStatement.executeQuery(qery);
 
 
-            while (resultSet.next()){
-                kolvo=resultSet.getInt(1);
-                price= resultSet.getFloat(2);
+            while (resultSet.next()) {
+                kolvo = resultSet.getInt(1);
+                price = resultSet.getFloat(2);
 
             }
-            rez=kolvo-kolvo1;
+            rez = kolvo - kolvo1;
 
 
-            if(rez>0){
-                PreparedStatement preparedStatement1=connection.prepareStatement(update);
-                preparedStatement1.setInt(1,rez);
+            if (rez > 0) {
+                PreparedStatement preparedStatement1 = connection.prepareStatement(update);
+                preparedStatement1.setInt(1, rez);
                 preparedStatement1.executeUpdate();
-                price=price*kolvo1;
+                price = price * kolvo1;
 
             }
-            if(rez==0){
+            if (rez == 0) {
                 delit(find(id));
-                price=price*kolvo1;
+                price = price * kolvo1;
             }
-            if(rez<0) {
+            if (rez < 0) {
 
                 System.out.println("error");
                 return 0;
             }
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return price;
     }
 
     @Override
-    public Newspaper update(Newspaper newspaper) {
-        String insert= "UPDATE newspapers SET name = ?, autor = ?, price = ?, kolvo = ? WHERE id = "+newspaper.getId();
+    public Books update(Books sourse) {
+        String insert= "UPDATE books SET name = ?, autor = ?, price = ?, kolvo = ? WHERE id = "+sourse.getId();
+
 
 
         try {
             PreparedStatement prST=connection.prepareStatement(insert);
 
 
-            prST.setInt(4,newspaper.getKolvo());
-            prST.setString(1,newspaper.getName());
-            prST.setString(2, newspaper.getAutor());
-            prST.setDouble(3, newspaper.getPrice());
+            prST.setInt(4,sourse.getKolvo());
+            prST.setString(1,sourse.getName());
+            prST.setString(2, sourse.getAutor());
+            prST.setDouble(3, sourse.getPrice());
 
             prST.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return newspaper;
+        return sourse;
     }
 }

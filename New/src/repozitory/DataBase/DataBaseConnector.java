@@ -15,7 +15,7 @@ public class DataBaseConnector {
     public DataBaseConnector(){
         try {
             connection= DriverManager.getConnection(durl+dbhost+":"+dbport+"/"+dbname,dbuser,dbpass);
-            System.out.println("DB: " + connection.getMetaData().getDatabaseProductName());
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

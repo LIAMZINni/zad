@@ -65,22 +65,7 @@ public class InMemoryBooks implements Repozitory<Books> {
     }
 
     @Override
-    public Books update(int id) {
-        Scanner scan =new Scanner(System.in);
-        Books book=find(id);
-        System.out.print("name= ");
-        String name=scan.next();
-
-        System.out.print("autor= ");
-        String autor=scan.next();
-        System.out.print("kolvo= ");
-        int kolvo=scan.nextInt();
-        System.out.print("price ");
-        double price= scan.nextInt();
-        book.setName(name);
-        book.setAutor(autor);
-        book.setKolvo(kolvo);
-        book.setPrice(price);
+    public Books update(Books book) {
 
 
         return book;

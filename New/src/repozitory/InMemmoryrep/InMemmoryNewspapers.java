@@ -6,10 +6,10 @@ import repozitory.Repozitory;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class InMemmory implements Repozitory<Newspaper> {
+public class InMemmoryNewspapers implements Repozitory<Newspaper> {
     private final ArrayList<Newspaper> publicistics;
 
-    public InMemmory() {
+    public InMemmoryNewspapers() {
         this.publicistics= Storage.getInstance().newspapers;
     }
 
@@ -71,22 +71,8 @@ public class InMemmory implements Repozitory<Newspaper> {
     }
 
     @Override
-    public Newspaper update(int id) {
-        Scanner scan =new Scanner(System.in);
-        Newspaper newspaper=find(id);
-        System.out.print("name= ");
-        String name=scan.next();
+    public Newspaper update(Newspaper newspaper) {
 
-        System.out.print("autor= ");
-        String autor=scan.next();
-        System.out.print("kolvo= ");
-        int kolvo=scan.nextInt();
-        System.out.print("price ");
-        double price= scan.nextInt();
-        newspaper.setName(name);
-        newspaper.setAutor(autor);
-        newspaper.setKolvo(kolvo);
-        newspaper.setPrice(price);
 
 
         return newspaper;

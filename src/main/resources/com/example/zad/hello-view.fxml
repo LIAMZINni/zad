@@ -83,7 +83,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="add_kolvo_magazine" />
+                                          <TextField fx:id="add_kolvo_magazine" prefHeight="25.0" prefWidth="291.0" promptText="Количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -120,7 +120,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="add_kolvo_books" />
+                                          <TextField fx:id="add_kolvo_books" prefHeight="25.0" prefWidth="291.0" promptText="Количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">

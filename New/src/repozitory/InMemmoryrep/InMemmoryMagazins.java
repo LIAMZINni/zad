@@ -62,23 +62,7 @@ public class InMemmoryMagazins implements Repozitory<Magazins> {
     }
 
     @Override
-    public Magazins update(int id) {
-        Scanner scan =new Scanner(System.in);
-        Magazins magazins=find(id);
-        System.out.print("name= ");
-        String name=scan.next();
-
-        System.out.print("autor= ");
-        String autor=scan.next();
-        System.out.print("kolvo= ");
-        int kolvo=scan.nextInt();
-        System.out.print("price ");
-        double price= scan.nextInt();
-        magazins.setName(name);
-        magazins.setAutor(autor);
-        magazins.setKolvo(kolvo);
-        magazins.setPrice(price);
-
+    public Magazins update(Magazins magazins) {
 
         return magazins;
     }

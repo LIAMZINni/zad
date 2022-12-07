@@ -21,7 +21,7 @@ public class Menu {
     public void menu(){
         Scanner in=new Scanner(System.in);
         System.out.println("1-Добавить товар  2-Вывести информацию о товаре " +
-                "3-Продать товары"+" 4-Изменить товар  5-Найти по id 0-Закрыть "+"\n");
+                "3-Продать товары"+" 4-Изменить товар  5-Найти по id 6-Удалить товар 0-Закрыть "+"\n");
         int num = in.nextInt();
         switch (num){
             case 1->additem();
@@ -149,19 +149,42 @@ public class Menu {
 
         }
     }
+    public <T extends Newspaper> T set(T target){
+        Scanner in=new Scanner(System.in);
+        System.out.print("name= ");
+
+        String name = in.nextLine();
+        System.out.print("autor= ");
+        String autor = in.next();
+        System.out.print("kolvo= ");
+        int kolvo = in.nextInt();
+        System.out.print("price ");
+        double price=in.nextDouble();
+        target.setAutor(autor);
+        target.setName(name);
+        target.setKolvo(kolvo);
+        target.setPrice(price);
+
+        return target;
+    }
     public void updateItem(){
         Scanner in=new Scanner(System.in);
         System.out.println(" 1-Газеты 2-Книги 3-Журналы");
         int num = in.nextInt();
         System.out.print("id=");
-        int id=in.nextInt();
+        int id = in.nextInt();
+
+
+
         if(num==1){
-        newspaperServis.update(id);}
+            Newspaper newspaper=newspaperServis.findItem(id);
+        newspaperServis.update(set(newspaper));}
         if(num==2){
-            booksServis.update(id);
+            Books books=booksServis.findItem(id);
+            booksServis.update(set(books));
         }
         if(num==3){
-            magazinsServis.update(id);
+            magazinsServis.update(magazinsServis.findItem(id));
         }
 
 

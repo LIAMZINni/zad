@@ -28,8 +28,8 @@ public class MagazinServis implements Servis<Magazins>{
     }
 
     @Override
-    public Magazins update(int id) {
-        return magazinsRepozitory.update(id);
+    public Magazins update(Magazins magazins) {
+        return magazinsRepozitory.update(magazins);
     }
 
     @Override

@@ -28,8 +28,8 @@ public class BooksServis implements Servis<Books>{
     }
 
     @Override
-    public Books update(int id) {
-        return booksRepozitory.update(id);
+    public Books update(Books books) {
+        return booksRepozitory.update(books);
     }
 
     @Override

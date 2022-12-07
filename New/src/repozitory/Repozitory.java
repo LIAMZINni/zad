@@ -11,7 +11,7 @@ public interface Repozitory<T> {
     void delit(T sourse);
     ArrayList<T> print();
     double sold(int id,int kolvo);
-    T update(int id);
+    T update(T sourse);
 
 
 }

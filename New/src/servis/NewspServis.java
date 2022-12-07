@@ -36,8 +36,8 @@ public class NewspServis implements Servis<Newspaper>{
     }
 
     @Override
-    public Newspaper update(int id) {
-        return repozitory.update(id);
+    public Newspaper update(Newspaper newspaper) {
+        return repozitory.update(newspaper);
     }
     @Override
     public void delit(Newspaper newspaper){

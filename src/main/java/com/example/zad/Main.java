@@ -1,53 +1,37 @@
-/*1. Газетный киоск занимается продажей газет, журналов и книг.
-Необходимо создать приложение, которое бы автоматизировало рабочее место продавца.
-Приложение должно позволять производить приемку товара, отмечать факт продажи товара, а также позволять редактировать
-неверно введенные данные о товаре. Необходимо предусмотреть возможность хранения нескольких экземпляров одного и того же товара
-(например, несколько одинаковых номеров газет)*/
 package com.example.zad;
 
-import java.util.Scanner;
+import com.example.zad.domen.Books;
+import com.example.zad.domen.Magazins;
+import com.example.zad.domen.Newspaper;
+import com.example.zad.repozitory.DataBase.DataBaseConnector;
+import com.example.zad.repozitory.DataBase.SqlBooksRepozitory;
+import com.example.zad.repozitory.DataBase.SqlMagazinsRepozitory;
+import com.example.zad.repozitory.DataBase.SqlNewspaperRepozitory;
+import com.example.zad.repozitory.Repozitory;
+import com.example.zad.servis.BooksServis;
+import com.example.zad.servis.MagazinServis;
+import com.example.zad.servis.NewspServis;
+import com.example.zad.servis.Servis;
+import com.example.zad.view.Menu;
+import javafx.stage.Stage;
 
 public class Main {
     public static void main(String[] args) {
+        Repozitory<Newspaper> repozitory=new SqlNewspaperRepozitory(new DataBaseConnector());
+        Repozitory<Books> booksRepozitory=new SqlBooksRepozitory(new DataBaseConnector());
+        Repozitory<Magazins>magazinsRepozitory=new SqlMagazinsRepozitory(new DataBaseConnector());
+        Servis<Newspaper> servis=new NewspServis(repozitory);
+        Servis<Books> booksServis=new BooksServis(booksRepozitory);
+        Servis<Magazins>magazinsServis=new MagazinServis(magazinsRepozitory);
 
-        Scanner in=new Scanner(System.in);
-        int num=0;
-
-        InMemmory list =new InMemmory();
-
-        Database db=new Database();
-
-
-
+        Menu menu=new Menu(servis,booksServis,magazinsServis);
 
 
-        do {
-            System.out.println("1-Добавить товар  2-Вывести информацию о товаре " +
-                    "3-Продать товары"+" 4-Изменить товар  5-Найти по id 0-Закрыть "+"\n");
-            num = in.nextInt();
-            switch (num){
-                case 1->list.additem();
-                case 2->list.printitems();
-                case 3->list.solditem();
-                case 4->list.chengenespaper();
-                case 5->list.findbyid();
-
-                default -> System.err.println("No command found");
-
-            }
-
-
+        while (true){
+            menu.menu();
 
         }
-        while (num!=0);
-
-
-
-
-
-
 
 
     }
-
 }

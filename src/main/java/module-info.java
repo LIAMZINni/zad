@@ -5,5 +5,7 @@ module com.example.zad {
 
 
     opens com.example.zad to javafx.fxml;
+    opens com.example.zad.domen to javafx.base;
+
     exports com.example.zad;
 }

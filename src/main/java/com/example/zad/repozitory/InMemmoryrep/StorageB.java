@@ -1,6 +1,7 @@
-package repozitory.InMemmoryrep;
+package com.example.zad.repozitory.InMemmoryrep;
 
-import domen.Books;
+import com.example.zad.domen.Books;
+
 
 import java.util.ArrayList;
 

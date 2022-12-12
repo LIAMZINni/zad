@@ -1,4 +1,4 @@
-package repozitory.DataBase;
+package com.example.zad.repozitory.DataBase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

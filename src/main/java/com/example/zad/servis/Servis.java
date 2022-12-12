@@ -1,4 +1,4 @@
-package servis;
+package com.example.zad.servis;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
-package repozitory;
+package com.example.zad.repozitory;
 
-import domen.Newspaper;
+
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public interface Repozitory<T> {
     void add(T sourse);

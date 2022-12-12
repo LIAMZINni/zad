@@ -1,6 +1,8 @@
-package repozitory.InMemmoryrep;
+package com.example.zad.repozitory.InMemmoryrep;
 
-import domen.Newspaper;
+
+
+import com.example.zad.domen.Newspaper;
 
 import java.util.ArrayList;
 
@@ -22,9 +24,5 @@ public class Storage {
         this.newspapers=new ArrayList<>();
 
     }
-
-
-
-
 
 }

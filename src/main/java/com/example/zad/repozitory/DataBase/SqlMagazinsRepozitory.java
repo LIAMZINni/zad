@@ -1,8 +1,8 @@
-package repozitory.DataBase;
+package com.example.zad.repozitory.DataBase;
 
-import domen.Books;
+import com.example.zad.domen.Magazins;
 
-import repozitory.Repozitory;
+import com.example.zad.repozitory.Repozitory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,16 +10,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SqlBooksRepozitory implements Repozitory<Books> {
-    public final Connection connection;
+public class SqlMagazinsRepozitory implements Repozitory<Magazins> {
+    private final Connection connection;
 
-    public SqlBooksRepozitory(DataBaseConnector baseConnector) {
-        this.connection = baseConnector.getDbconnection();
+    public SqlMagazinsRepozitory(DataBaseConnector dataBaseConnector) {
+        this.connection = dataBaseConnector.getDbconnection();
     }
 
     @Override
-    public void add(Books sourse) {
-        String insert= "INSERT books (name,autor,price,kolvo) VALUES(?,?,?,?)";
+    public void add(Magazins sourse) {
+        String insert= "INSERT magazins (name,autor,price,kolvo) VALUES(?,?,?,?)";
+
         try {
             PreparedStatement prST=connection.prepareStatement(insert);
 
@@ -33,13 +34,12 @@ public class SqlBooksRepozitory implements Repozitory<Books> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
-    public Books find(int id) {
-        String qery="SELECT *FROM books WHERE id = "+id;
-        Books books = null;
+    public Magazins find(int id) {
+        String qery="SELECT *FROM magazins WHERE id = "+id;
+        Magazins magazins = null;
 
 
         try {
@@ -51,19 +51,21 @@ public class SqlBooksRepozitory implements Repozitory<Books> {
                 String autor=resultSet.getString(3);
                 int kolvo=resultSet.getInt(4);
                 double price=resultSet.getDouble(5);
-                books =new Books(name,id1,price,kolvo,autor);
+                magazins =new Magazins(name,id1,price,kolvo,autor);
 
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return books;
+        return magazins;
     }
 
+
+
     @Override
-    public void delit(Books sourse) {
-        String insert= "DELETE FROM books WHERE id = ?";
+    public void delit(Magazins sourse) {
+        String insert= "DELETE FROM magazins WHERE id = ?";
 
         try {
             PreparedStatement prST=connection.prepareStatement(insert);
@@ -75,13 +77,13 @@ public class SqlBooksRepozitory implements Repozitory<Books> {
             e.printStackTrace();
         }
 
+
     }
 
     @Override
-    public ArrayList<Books> print() {
-        String insert = "SELECT * FROM books" ;
-        ArrayList<Books>booksArrayList=new ArrayList<>();
-
+    public ArrayList<Magazins> print() {
+        String insert = "SELECT * FROM magazins" ;
+        ArrayList<Magazins>magazinsArrayList=new ArrayList<>();
 
 
 
@@ -98,7 +100,7 @@ public class SqlBooksRepozitory implements Repozitory<Books> {
                 double price = (resultSet.getDouble(4));
                 int kolvo=(resultSet.getInt(5));
 
-                booksArrayList.add(new Books(name,id,price,kolvo,autor));
+                magazinsArrayList.add(new Magazins(name,id,price,kolvo,autor));
 
 
             }
@@ -106,57 +108,59 @@ public class SqlBooksRepozitory implements Repozitory<Books> {
             e.printStackTrace();
         }
 
-        return booksArrayList;
+        return magazinsArrayList;
     }
 
     @Override
     public double sold(int id, int kolvo1) {
-        String qery = "SELECT kolvo,price FROM books WHERE id =" + id;
-        String update = "UPDATE books SET kolvo = ? WHERE id = " + id;
-        int kolvo = 0;
-        double price = 0;
-        int rez = 0;
+        String qery="SELECT kolvo,price FROM magazins WHERE id ="+id;
+        String update="UPDATE magazins SET kolvo = ? WHERE id = "+ id;
+        int kolvo=0;
+        double price=0;
+        int rez=0;
         try {
 
-            PreparedStatement preparedStatement = connection.prepareStatement(qery);
+            PreparedStatement preparedStatement =connection.prepareStatement(qery);
             ResultSet resultSet = preparedStatement.executeQuery(qery);
 
 
-            while (resultSet.next()) {
-                kolvo = resultSet.getInt(1);
-                price = resultSet.getFloat(2);
+            while (resultSet.next()){
+                kolvo=resultSet.getInt(1);
+                price= resultSet.getFloat(2);
 
             }
-            rez = kolvo - kolvo1;
+            rez=kolvo-kolvo1;
 
 
-            if (rez > 0) {
-                PreparedStatement preparedStatement1 = connection.prepareStatement(update);
-                preparedStatement1.setInt(1, rez);
+            if(rez>0){
+                PreparedStatement preparedStatement1=connection.prepareStatement(update);
+                preparedStatement1.setInt(1,rez);
                 preparedStatement1.executeUpdate();
-                price = price * kolvo1;
+                price=price*kolvo1;
 
             }
-            if (rez == 0) {
+            if(rez==0){
                 delit(find(id));
-                price = price * kolvo1;
+                price=price*kolvo1;
             }
-            if (rez < 0) {
+            if(rez<0) {
 
                 System.out.println("error");
                 return 0;
             }
 
 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return price;
     }
 
     @Override
-    public Books update(Books sourse) {
-        String insert= "UPDATE books SET name = ?, autor = ?, price = ?, kolvo = ? WHERE id = "+sourse.getId();
+    public Magazins update(Magazins sourse) {
+        String insert= "UPDATE magazins SET name = ?, autor = ?, price = ?, kolvo = ? WHERE id = "+sourse.getId();
 
 
 

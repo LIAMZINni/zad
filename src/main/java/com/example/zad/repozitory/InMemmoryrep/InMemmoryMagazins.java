@@ -1,11 +1,10 @@
-package repozitory.InMemmoryrep;
+package com.example.zad.repozitory.InMemmoryrep;
 
-import domen.Books;
-import domen.Magazins;
-import repozitory.Repozitory;
+import com.example.zad.domen.Magazins;
+
+import com.example.zad.repozitory.Repozitory;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class InMemmoryMagazins implements Repozitory<Magazins> {
     private final ArrayList<Magazins> magazinsArrayList;

@@ -1,7 +1,8 @@
-package repozitory.DataBase;
+package com.example.zad.repozitory.DataBase;
 
-import domen.Newspaper;
-import repozitory.Repozitory;
+import com.example.zad.domen.Newspaper;
+
+import com.example.zad.repozitory.Repozitory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

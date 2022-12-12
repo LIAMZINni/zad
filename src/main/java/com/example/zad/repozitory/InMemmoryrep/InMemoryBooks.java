@@ -1,10 +1,10 @@
-package repozitory.InMemmoryrep;
+package com.example.zad.repozitory.InMemmoryrep;
 
-import domen.Books;
-import repozitory.Repozitory;
+import com.example.zad.domen.Books;
+import com.example.zad.repozitory.Repozitory;
+
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class InMemoryBooks implements Repozitory<Books> {
     private final ArrayList<Books> booksArrayList;

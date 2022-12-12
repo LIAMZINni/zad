@@ -17,12 +17,12 @@
    <children>
       <AnchorPane layoutY="158.0" prefHeight="471.0" prefWidth="879.0" style="-fx-background-color: fafafa;">
          <children>
-            <TableView fx:id="table" layoutX="192.0" layoutY="182.0" prefHeight="200.0" prefWidth="496.0">
+            <TableView fx:id="table" layoutX="191.0" layoutY="155.0" prefHeight="242.0" prefWidth="497.0">
               <columns>
                 <TableColumn fx:id="id_colomn" prefWidth="45.0" text="id" />
-                <TableColumn fx:id="name_colomn" prefWidth="103.0" text="name" />
-                  <TableColumn fx:id="autor_colomn" prefWidth="98.0" text="autor" />
-                  <TableColumn fx:id="price_colomn" text="price" />
+                <TableColumn fx:id="name_colomn" prefWidth="103.0" text="Название " />
+                  <TableColumn fx:id="autor_colomn" prefWidth="98.0" text="Автор" />
+                  <TableColumn fx:id="price_colomn" text="Цена" />
                   <TableColumn fx:id="kolvo_kolomn" prefWidth="75.0" text="Количество" />
               </columns>
             </TableView>
@@ -46,7 +46,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="add_kolvo_newspaper" prefHeight="25.0" prefWidth="291.0" promptText="Количество" />
+                                          <TextField fx:id="add_kolvo_newspaper" prefHeight="25.0" prefWidth="291.0" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -83,7 +83,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="add_kolvo_magazine" prefHeight="25.0" prefWidth="291.0" promptText="Количество" />
+                                          <TextField fx:id="add_kolvo_magazine" prefHeight="25.0" prefWidth="291.0" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -120,7 +120,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="add_kolvo_books" prefHeight="25.0" prefWidth="291.0" promptText="Количество" />
+                                          <TextField fx:id="add_kolvo_books" prefHeight="25.0" prefWidth="291.0" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -167,7 +167,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="update_newspaper_kolvo" promptText="Количество " />
+                                          <TextField fx:id="update_newspaper_kolvo" promptText="количество " />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -177,7 +177,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button fx:id="buttom_apdate_newspaper" mnemonicParsing="false" onAction="#update" text="Изменить" />
+                                          <Button fx:id="buttom_apdate_newspaper" minHeight="30.0" mnemonicParsing="false" onAction="#update" prefWidth="130.0" text="Изменить" />
                                        </graphic>
                                     </MenuItem>
                                  </items>
@@ -205,7 +205,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="update_magazins_kolvo" promptText="Количество" />
+                                          <TextField fx:id="update_magazins_kolvo" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -215,7 +215,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button fx:id="buttom_apdate_magazine" mnemonicParsing="false" onAction="#chenge_magazine" text="Изменить" />
+                                          <Button fx:id="buttom_apdate_magazine" minHeight="30.0" mnemonicParsing="false" onAction="#chenge_magazine" prefWidth="130.0" text="Изменить" />
                                        </graphic>
                                     </MenuItem>
                                  </items>
@@ -242,7 +242,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="update_books_kolvo" promptText="Колво" />
+                                          <TextField fx:id="update_books_kolvo" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -252,7 +252,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button fx:id="buttom_apdate_newspaper2" mnemonicParsing="false" onAction="#chenge_books" text="Изменить" />
+                                          <Button fx:id="buttom_apdate_newspaper2" minHeight="30.0" mnemonicParsing="false" onAction="#chenge_books" prefWidth="130.0" text="Изменить" />
                                        </graphic>
                                     </MenuItem>
                                  </items>
@@ -275,7 +275,7 @@
                                     </MenuItem>
                                   <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button mnemonicParsing="false" onAction="#delit_newspaper" text="Удалить" />
+                                          <Button minHeight="30.0" mnemonicParsing="false" onAction="#delit_newspaper" prefWidth="130.0" text="Удалить" />
                                        </graphic>
                                     </MenuItem>
                                 </items>
@@ -293,7 +293,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button mnemonicParsing="false" onAction="#delit_magazine" text="Удалить" />
+                                          <Button minHeight="30.0" mnemonicParsing="false" onAction="#delit_magazine" prefWidth="130.0" text="Удалить" />
                                        </graphic>
                                     </MenuItem>
                                  </items>
@@ -310,7 +310,7 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button mnemonicParsing="false" onAction="#delit_books" text="Удалить" />
+                                          <Button minHeight="30.0" mnemonicParsing="false" onAction="#delit_books" prefWidth="130.0" text="Удалить" />
                                        </graphic>
                                     </MenuItem>
                                  </items>
@@ -346,12 +346,12 @@
                                     </MenuItem>
                                   <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="sold_newspapers_kolvo" promptText="Количество" />
+                                          <TextField fx:id="sold_newspapers_kolvo" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button fx:id="button_newspapers_sold" mnemonicParsing="false" onAction="#Sold_newspapers" text="Продать" />
+                                          <Button fx:id="button_newspapers_sold" minHeight="30.0" mnemonicParsing="false" onAction="#Sold_newspapers" prefWidth="130.0" text="Продать" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -374,12 +374,12 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="sold_magazins_kolvo" promptText="Количество" />
+                                          <TextField fx:id="sold_magazins_kolvo" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button fx:id="button_magazins_sold" mnemonicParsing="false" onAction="#Sold_magazins" text="Продать" />
+                                          <Button fx:id="button_magazins_sold" minHeight="30.0" mnemonicParsing="false" onAction="#Sold_magazins" prefWidth="130.0" text="Продать" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
@@ -402,12 +402,12 @@
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <TextField fx:id="sold_books_kolvo" promptText="Количество" />
+                                          <TextField fx:id="sold_books_kolvo" promptText="количество" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">
                                        <graphic>
-                                          <Button fx:id="button_books_sold" mnemonicParsing="false" onAction="#Sold_books" text="Продать" />
+                                          <Button fx:id="button_books_sold" minHeight="30.0" mnemonicParsing="false" onAction="#Sold_books" prefWidth="130.0" text="Продать" />
                                        </graphic>
                                     </MenuItem>
                                     <MenuItem mnemonicParsing="false">

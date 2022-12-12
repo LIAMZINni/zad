@@ -1,12 +1,14 @@
-package servis;
+package com.example.zad.servis;
 
-import domen.Books;
-import repozitory.Repozitory;
+import com.example.zad.domen.Books;
+import com.example.zad.repozitory.Repozitory;
+
 
 import java.util.List;
 
 public class BooksServis implements Servis<Books>{
     private final Repozitory<Books> booksRepozitory;
+
 
     public BooksServis(Repozitory<Books> booksRepozitory) {
         this.booksRepozitory = booksRepozitory;

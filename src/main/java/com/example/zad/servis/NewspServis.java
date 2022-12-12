@@ -1,13 +1,15 @@
-package servis;
+package com.example.zad.servis;
 
-import domen.Newspaper;
-import repozitory.Repozitory;
+import com.example.zad.domen.Newspaper;
+import com.example.zad.repozitory.Repozitory;
+
 
 import java.util.List;
 
 public class NewspServis implements Servis<Newspaper>{
 
     private final Repozitory<Newspaper> repozitory;
+
 
     public NewspServis(Repozitory<Newspaper> repozitory) {
         this.repozitory = repozitory;

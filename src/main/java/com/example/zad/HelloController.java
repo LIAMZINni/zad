@@ -1,12 +1,30 @@
 package com.example.zad;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import com.example.zad.domen.Books;
+import com.example.zad.domen.Magazins;
+import com.example.zad.domen.Newspaper;
+import com.example.zad.repozitory.DataBase.DataBaseConnector;
+import com.example.zad.repozitory.DataBase.SqlBooksRepozitory;
+import com.example.zad.repozitory.DataBase.SqlMagazinsRepozitory;
+import com.example.zad.repozitory.DataBase.SqlNewspaperRepozitory;
+import com.example.zad.repozitory.Repozitory;
+import com.example.zad.servis.BooksServis;
+import com.example.zad.servis.MagazinServis;
+import com.example.zad.servis.NewspServis;
+import com.example.zad.servis.Servis;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import static java.lang.Integer.parseInt;
 
 public class HelloController implements Initializable {
 
@@ -35,7 +53,7 @@ public class HelloController implements Initializable {
     private TextField autor2;
 
     @FXML
-    private TableColumn<Newspaper, String> autor_colomn;
+    private TableColumn<List, String> autor_colomn;
 
     @FXML
     private Button buttom_apdate_newspaper;
@@ -50,7 +68,7 @@ public class HelloController implements Initializable {
     private TextField id;
 
     @FXML
-    private TableColumn<Newspaper, Integer> id_colomn;
+    private TableColumn<List, Integer> id_colomn;
 
     @FXML
     private TextField name;
@@ -59,7 +77,7 @@ public class HelloController implements Initializable {
     private TextField name2;
 
     @FXML
-    private TableColumn<Newspaper, String> name_colomn;
+    private TableColumn<List, String> name_colomn;
 
     @FXML
     private TextField price2;
@@ -68,11 +86,11 @@ public class HelloController implements Initializable {
     private TextField price;
 
     @FXML
-    private TableColumn<Newspaper, Double> price_colomn;
+    private TableColumn<List, Double> price_colomn;
     @FXML
-    private TableColumn<Newspaper,Integer> kolvo_kolomn;
+    private TableColumn<List,Integer> kolvo_kolomn;
     @FXML
-    private TableView<Newspaper> table;
+    private TableView table;
     @FXML
     private Label test_label;
     @FXML
@@ -158,81 +176,112 @@ public class HelloController implements Initializable {
     private ChoiceBox<String> chose_box;
     private String[] choises={"Газеты","Журналы","Книги"};
 
+
+    Repozitory<Newspaper> repozitory=new SqlNewspaperRepozitory(new DataBaseConnector());
+    Repozitory<Books> booksRepozitory=new SqlBooksRepozitory(new DataBaseConnector());
+    Repozitory<Magazins>magazinsRepozitory=new SqlMagazinsRepozitory(new DataBaseConnector());
+    Servis<Newspaper> newspaperServis=new NewspServis(repozitory);
+    Servis<Books> booksServis=new BooksServis(booksRepozitory);
+    Servis<Magazins>magazinsServis=new MagazinServis(magazinsRepozitory);
+
+
+
+
+
+
+
+
     @FXML
 
 
-    Database dbhendler= new Database();
+
+
         public void initialize() {
 
-            dbhendler.singnewspaper(Const.tablenewspapers, autor.getText(), name.getText(),Integer.parseInt(add_kolvo_newspaper.getText()), Integer.parseInt(price.getText()));
-
+            Newspaper newspaper =new Newspaper(name.getText(),0, Integer.parseInt(price.getText()), Integer.parseInt(add_kolvo_newspaper.getText()),autor.getText());
+            newspaperServis.add(newspaper);
         }
 
          public void update(){
-            buttom_apdate_newspaper.setOnAction(actionEvent -> {
-            dbhendler.updete(Const.tablenewspapers,name2.getText(),autor2.getText(),Integer.parseInt(update_newspaper_kolvo.getText()), Integer.parseInt(price2.getText()),Integer.parseInt(id.getText()));
+
+            Newspaper newspaper=new Newspaper(name2.getText(),parseInt(id.getText()), Integer.parseInt(price2.getText()),parseInt(update_newspaper_kolvo.getText()),autor2.getText());
+            newspaperServis.update(newspaper);
 
 
-        });
+
         }
+    public  <T extends Newspaper> ObservableList<T> convert (List<T> tArrayList){
+            ObservableList<T> list=FXCollections.observableArrayList(tArrayList);
+
+        return list;
+
+    }
         public void print_table(){
-            id_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,Integer>("id"));
-            name_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,String>("name"));
-            autor_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,String>("autor"));
-            price_colomn.setCellValueFactory(new PropertyValueFactory<Newspaper,Double>("price"));
-            kolvo_kolomn.setCellValueFactory(new PropertyValueFactory<Newspaper,Integer>("kolvo"));
+            id_colomn.setCellValueFactory(new PropertyValueFactory<List,Integer>("id"));
+            name_colomn.setCellValueFactory(new PropertyValueFactory<List,String>("name"));
+            autor_colomn.setCellValueFactory(new PropertyValueFactory<List,String>("autor"));
+            price_colomn.setCellValueFactory(new PropertyValueFactory<List,Double>("price"));
+            kolvo_kolomn.setCellValueFactory(new PropertyValueFactory<List,Integer>("kolvo"));
             String vibor=chose_box.getValue();
             if(vibor.equals("Газеты")){
-            table.setItems(dbhendler.print(Const.tablenewspapers));}
+
+                table.setItems(convert(newspaperServis.printAll()));
+            }
             if(vibor.equals("Журналы")){
-                table.setItems(dbhendler.print(Const.tablemagazins));
+                table.setItems(convert(magazinsServis.printAll()));
 
             }
             if(vibor.equals("Книги")){
-                table.setItems(dbhendler.print(Const.tablebooks));
+                table.setItems(convert(booksServis.printAll()));
             }
 
 
 
         }
         public void addmagazine(){
-            dbhendler.singnewspaper(Const.tablemagazins,add_name_magazine.getText(),add_autor_magazine.getText(),Integer.parseInt(add_kolvo_magazine.getText()),Integer.parseInt(add_price_magazine.getText()));
+            Magazins magazins=new Magazins(add_name_magazine.getText(),0, parseInt(add_price_magazine.getText()),parseInt(add_kolvo_magazine.getText()),add_autor_magazine.getText());
+            magazinsServis.add(magazins);
 
         }
         public void addbooks(){
-            dbhendler.singnewspaper(Const.tablebooks, add_name_books.getText(), add_autor_books.getText(),Integer.parseInt(add_kolvo_books.getText()),Integer.parseInt(add_price_books.getText()));
+        Books books=new Books(add_name_books.getText(),0, parseInt(add_price_books.getText()),parseInt(add_kolvo_books.getText()),add_autor_books.getText());
+        booksServis.add(books);
         }
+
+
         public void chenge_magazine(){
-            dbhendler.updete(Const.tablemagazins, chenge_name_magazine.getText(),chenge_autor_magazine.getText(),Integer.parseInt(update_magazins_kolvo.getText()),Integer.parseInt(chenge_price_magazine.getText()),Integer.parseInt(chenge_id_magazine.getText()));
+            Magazins magazins =new Magazins(chenge_name_magazine.getText(),parseInt(chenge_id_magazine.getText()), parseInt(chenge_price_magazine.getText()),parseInt(update_magazins_kolvo.getText()),chenge_autor_magazine.getText());
+            magazinsServis.update(magazins);
         }
         public void chenge_books(){
-            dbhendler.updete(Const.tablebooks,chenge_name_books.getText(),chenge_autor_books.getText(),Integer.parseInt(chenge_price_books.getText()),Integer.parseInt(update_books_kolvo.getText()),Integer.parseInt(chenge_id_books.getText()));
+            Books books=new Books(chenge_name_books.getText(),parseInt(chenge_id_books.getText()), parseInt(chenge_price_books.getText()), parseInt(update_books_kolvo.getText()),chenge_autor_books.getText());
+            booksServis.update(books);
 
         }
         public void delit_newspaper(){
-            dbhendler.delit(Const.tablenewspapers,Integer.parseInt(delit_id_newspaper.getText()));
+            newspaperServis.delit(newspaperServis.findItem(Integer.parseInt(delit_id_newspaper.getText())));
 
         }
         public void delit_magazine(){
-            dbhendler.delit(Const.tablemagazins,Integer.parseInt(delit_id_magazine.getText()));
+            magazinsServis.delit(magazinsServis.findItem( parseInt(delit_id_magazine.getText())));
         }
         public void delit_books(){
-            dbhendler.delit(Const.tablebooks,Integer.parseInt(delit_id_books.getText()));
+            booksServis.delit(booksServis.findItem( parseInt(delit_id_books.getText())));
 
         }
         public void Sold_newspapers(){
             double priceN=0;
-            priceN=dbhendler.sold(Const.tablenewspapers,Integer.parseInt(sold_newspapers_id.getText()),Integer.parseInt(sold_newspapers_kolvo.getText()));
+            priceN=newspaperServis.sold(parseInt(sold_newspapers_id.getText()), parseInt(sold_newspapers_kolvo.getText()));
             label_newspaers_price.setText("Цена = "+String.valueOf(priceN));
         }
     public void Sold_magazins(){
         double priceM=0;
-        priceM=dbhendler.sold(Const.tablemagazins,Integer.parseInt(sold_magazin_id.getText()),Integer.parseInt(sold_magazins_kolvo.getText()));
+        priceM=magazinsServis.sold( parseInt(sold_magazin_id.getText()), parseInt(sold_magazins_kolvo.getText()));
         label_magazins_price.setText("Цена = "+String.valueOf(priceM));
     }
     public void Sold_books(){
             double priceB=0;
-            priceB=dbhendler.sold(Const.tablebooks,Integer.parseInt(sold_bboks_id.getText()),Integer.parseInt(sold_books_kolvo.getText()));
+            priceB=booksServis.sold(parseInt(sold_bboks_id.getText()), parseInt(sold_books_kolvo.getText()));
             label_books_price.setText("Цена = "+String.valueOf(priceB));
     }
 
@@ -240,8 +289,8 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         chose_box.getItems().addAll(choises);
     }
-}
 
+}
 
 
 

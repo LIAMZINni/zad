@@ -1,9 +1,10 @@
-package view;
+package com.example.zad.view;
 
-import domen.Books;
-import domen.Magazins;
-import domen.Newspaper;
-import servis.Servis;
+import com.example.zad.domen.Books;
+import com.example.zad.domen.Magazins;
+import com.example.zad.domen.Newspaper;
+import com.example.zad.servis.Servis;
+;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class Menu {
     private final Servis<Books>booksServis;
     private final Servis<Magazins>magazinsServis;
 
-    public Menu(Servis<Newspaper> newspaperServis,Servis<Books>booksServis,Servis<Magazins>magazinsServis) {
+    public Menu(Servis<Newspaper> newspaperServis, Servis<Books>booksServis, Servis<Magazins> magazinsServis) {
         this.newspaperServis = newspaperServis;
         this.booksServis=booksServis;
         this.magazinsServis = magazinsServis;

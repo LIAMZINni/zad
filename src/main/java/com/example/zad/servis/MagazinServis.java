@@ -1,7 +1,8 @@
-package servis;
+package com.example.zad.servis;
 
-import domen.Magazins;
-import repozitory.Repozitory;
+import com.example.zad.domen.Magazins;
+import com.example.zad.repozitory.Repozitory;
+
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package repozitory.InMemmoryrep;
+package com.example.zad.repozitory.InMemmoryrep;
 
-import domen.Newspaper;
-import repozitory.Repozitory;
+import com.example.zad.domen.Newspaper;
+import com.example.zad.repozitory.Repozitory;
+
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class InMemmoryNewspapers implements Repozitory<Newspaper> {
     private final ArrayList<Newspaper> publicistics;

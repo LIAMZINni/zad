@@ -1,4 +1,4 @@
-package com.example.zad;
+package com.example.zad.domen;
 
 public class Newspaper {
     private String autor;
@@ -7,13 +7,11 @@ public class Newspaper {
     private int kolvo;
     private double price;
 
-    public double getPrice() {
-        return price;
-    }
 
 
 
-    public Newspaper(String name, int id, double price, int kolvo, String autor) {
+
+    public Newspaper(String name, Integer id, double price, int kolvo, String autor) {
         this.name = name;
         this.id = id;
         this.price = price;
@@ -27,7 +25,8 @@ public class Newspaper {
     }
 
     public void setKolvo(int kolvo) {
-        this.kolvo = kolvo;
+
+        this.kolvo=kolvo;
     }
 
     public void setId(int id){
@@ -46,6 +45,9 @@ public class Newspaper {
     public void setPrice(double price) {
         this.price = price;
     }
+    public double getPrice() {
+        return price;
+    }
 
     public void setAutor(String autor){
         this.autor=autor;
@@ -63,4 +65,5 @@ public class Newspaper {
                 "price= "+price+"\n";
 
     }
+
 }
